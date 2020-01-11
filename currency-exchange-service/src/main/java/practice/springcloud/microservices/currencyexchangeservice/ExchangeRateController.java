@@ -23,7 +23,6 @@ public class ExchangeRateController {
 	public ExchangeValue exchangeCurrency(@PathVariable String from,
 			@PathVariable String to){
 		ExchangeValue val  = repository.findByFromAndTo(from, to);
-		new ExchangeValue(val.getId(),val.getFrom(),val.getTo(),val.getConversionMultiple());
 		val.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
 		return val;
 	}
