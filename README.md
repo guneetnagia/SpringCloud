@@ -27,3 +27,4 @@ application name : currency-exchange-service
 port=8000,8001
 http://localhost:8000/currency-exchange/from/USD/to/INR
 command to run on different port : mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8001
+http://localhost:8000/h2-console

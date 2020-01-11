@@ -2,11 +2,19 @@ package practice.springcloud.microservices.currencyexchangeservice.vo;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ExchangeValue {
+	@Id
 	private long id;
-	private BigDecimal conversionMultiple;
+	@Column(name="currency_from")
 	private String from;
+	@Column(name="currency_to")
 	private String to;
+	private BigDecimal conversionMultiple;
 	private int port;
 	
 	public ExchangeValue(long id, String from, String to, BigDecimal conversionMultiple) {
