@@ -12,6 +12,9 @@ import practice.springcloud.microservices.currencyexchangeservice.vo.ExchangeVal
 
 @RestController
 public class ExchangeRateController {
+	
+	@Autowired
+	private ExchangeValueRepository repository;
 
 	@Autowired
 	private Environment environment;
@@ -19,7 +22,8 @@ public class ExchangeRateController {
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public ExchangeValue exchangeCurrency(@PathVariable String from,
 			@PathVariable String to){
-		ExchangeValue val = new ExchangeValue(1000L,from,to,BigDecimal.valueOf(75));
+		ExchangeValue val  = repository.findByFromAndTo(from, to);
+		new ExchangeValue(val.getId(),val.getFrom(),val.getTo(),val.getConversionMultiple());
 		val.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
 		return val;
 	}
