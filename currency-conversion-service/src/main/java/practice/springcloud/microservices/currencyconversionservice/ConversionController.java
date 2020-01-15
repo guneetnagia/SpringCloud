@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import practice.springcloud.microservices.currencyconversionservice.VO.CurrencyC
 
 @RestController
 @EnableFeignClients("practice.springcloud.microservices.currencyconversionservice")
+@EnableDiscoveryClient
 public class ConversionController {
 	
 	@Autowired
